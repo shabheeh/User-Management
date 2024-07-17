@@ -1,0 +1,273 @@
+<%- include('../layouts/header', { cssFile: '/static/dash.css' }) %>
+
+<body>
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h2>User <b>Management</b></h2>
+                    </div>
+                    <div class="col-sm-7 d-flex justify-content-end">
+                        <a href="#addUserModal" class="btn btn-secondary mr-2" data-toggle="modal">
+                            <i class="material-icons">&#xE147;</i> 
+                            <span>Add New User</span>
+                        </a>
+                        <div class="input-group" style="width: auto;">
+                            <input type="text" id="searchInput" class="form-control" placeholder="Search User" style="border-radius: 2px; padding: 5px 10px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>SI</th>
+                        <th>Name</th>						
+                        <th>Date Created</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (users.length > 0) { %>
+                        <% users.forEach((user, index) => { %>
+                            <tr>
+                                <td><%= index + 1 %></td>
+                                <td><%= user.username %></td>
+                                <td><%= user.doc %></td>
+                                <td><%= user.email %></td>
+                                <td><%= user.mobile %></td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button class="btn btn-link p-0" data-toggle="modal" data-target="#editUserModal<%= user._id %>">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                        <button class="btn btn-link p-0" data-toggle="modal" data-target="#deleteUserModal<%= user._id %>">
+                                            <i style="color: red;" class="material-icons">delete</i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Edit User Modal -->
+                            <div id="editUserModal<%= user._id %>" class="modal fade" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <form action="/admedituser" method="post" >
+                                            <input type="hidden" name="userId" value="<%= user._id %>">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Edit User</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <label for="username-<%= user._id %>">Username</label>
+                                                    <input type="text" class="form-control" name="username" id="username" value="<%= user.username %>" >
+                                                    <p><%= signupMessagename ? signupMessagename : '' %></p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="email-<%= user._id %>">Email</label>
+                                                    <input type="email" class="form-control" name="email" id="email" value="<%= user.email %>" >
+                                                    <p><%= signupMessagemail ? signupMessagemail : '' %></p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="mobile-<%= user._id %>">Mobile</label>
+                                                    <input type="text" class="form-control" name="mobile" id="mobile" value="<%= user.mobile %>" >
+                                                    <p><%= signupMessagemob ? signupMessagemob : '' %></p>
+
+                                                </div>
+                                                <%
+                                                if(typeof signupMessage != 'undefined'){
+                                                  %>
+                                                  <p class="success"><%= signupMessage %></p>
+                                                  <%
+                                                }
+                                              %>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Update</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Delete User Modal -->
+                            <div id="deleteUserModal<%= user._id %>" class="modal fade" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <form action="/deleteuser" method="post">
+                                            <input type="hidden" name="id" value="<%= user._id %>">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Delete User</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Are you sure you want to delete this user?</p>
+                                                <p class="text-warning"><small>This action cannot be undone.</small></p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }); %>
+                    <% } else { %>
+                        <tr>
+                            <td colspan="6">No users found.</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+            <!--
+            <div class="clearfix">
+                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                <ul class="pagination">
+                    <li class="page-item disabled"><a href="#">Previous</a></li>
+                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                </ul>
+            </div>
+        -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 text-right">
+            <a href="/signout" class="btn btn-danger">Sign Out</a>
+        </div>
+    </div>
+</div>  
+
+
+<!--Add User-->
+<div id="addUserModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="/adduser" method="post" id="myForm">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" name="username" placeholder="Username">
+                        <p class="error-message" id="usernameError"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" name="email" placeholder="Email">
+                        <p class="error-message" id="emailError"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile">Mobile</label>
+                        <input type="text" class="form-control" name="mobile" placeholder="Mobile">
+                        <p class="error-message" id="mobileError"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" name="password" placeholder="Password">
+                        <p class="error-message" id="passwordError"></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+document.getElementById('searchInput').addEventListener('keyup', function() {
+    var filter = this.value.toLowerCase();
+    var rows = document.querySelectorAll('table tbody tr');
+
+    rows.forEach(function(row) {
+        var text = row.textContent.toLowerCase();
+        row.style.display = text.includes(filter) ? '' : 'none';
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('myForm');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get form values
+            const username = document.querySelector('#myForm input[name="username"]').value.trim();
+            const email = document.querySelector('#myForm input[name="email"]').value.trim();
+            const mobile = document.querySelector('#myForm input[name="mobile"]').value.trim();
+            const password = document.querySelector('#myForm input[name="password"]').value.trim();
+
+            // Clear previous error messages
+            clearErrorMessages();
+
+            // Validate form fields
+            if (!username) {
+                displayErrorMessage('Username is required', 'usernameError');
+                return;
+            }
+
+            if (!email) {
+                displayErrorMessage('Email is required', 'emailError');
+                return;
+            }
+
+            if (!mobile) {
+                displayErrorMessage('Mobile is required', 'mobileError');
+                return;
+            }
+
+            if (!password) {
+                displayErrorMessage('Password is required', 'passwordError');
+                return;
+            }
+
+            if (password.length < 4) {
+                displayErrorMessage('Password must be at least 4 characters', 'passwordError');
+                return;
+            }
+
+            // If validation passes, submit the form
+            form.submit();
+        });
+
+        function displayErrorMessage(message, errorId) {
+            const errorMessage = document.getElementById(errorId);
+            errorMessage.textContent = message;
+        }
+
+        function clearErrorMessages() {
+            const errorMessages = document.querySelectorAll('.error-message');
+            errorMessages.forEach(errorMessage => {
+                errorMessage.textContent = '';
+            });
+        }
+    });
+    
+
+</script>
+
+</body>
+</html>

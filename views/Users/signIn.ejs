@@ -1,0 +1,37 @@
+<%- include('../layouts/header') -%>
+<body>
+  <div class="container">
+      <div class="content">
+        <div class="user singinBox">
+          <div class="formBx">
+            <form action="/signin" class="form form-container" method="post">
+              <h4 class="form--title">Sign In</h4>
+              <div class="form-field">
+                <label for="email">Email</label>
+                <input type="text" name="email" placeholder="Email">
+              </div>
+              <div class="form-field">
+                <label for="username">Password</label>
+                <input type="password" name="password" placeholder="Password">
+              </div>
+              <div class="form-action">
+                <!-- <a href="#">Forgot password?</a> -->
+                <button class="btn btn-primary" type="submit">Signin</button>
+              </div>
+              <p class="footer-p" > Don't have an account ? <a href="/user/signup">Create one</a></p>
+              <%
+              if(typeof signinMessage != 'undefined'){
+                %>
+                <p class="success"><%= signinMessage %></p>
+                <%
+              }
+            %>
+          </form>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+</body>
+
+<%-include('../layouts/footer')-%>

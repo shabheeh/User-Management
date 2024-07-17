@@ -1,0 +1,211 @@
+body{
+  background-color: #e6e5e1;
+}
+
+.form {
+  width: 100%;
+  
+}
+.form--title {
+  color: #f6f6f6;
+  font-size: 20px;
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+.form .form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 6px;
+}
+.form .form-field label {
+  font-size: 14px;
+  color: #f6e05e;
+  margin-bottom: 6px;
+}
+.form .form-field input {
+  padding: 8px 12px;
+  font-size: 12px;
+  background: #2a2c36;
+  color: #abb4bd;
+  border-radius: 3px;
+  outline: none;
+  border: 1px solid #abb4bd;
+  transition: all 0.3s;
+}
+.form .form-field input:focus {
+  border-bottom: 1px solid #f6e05e;
+}
+.form .form-action {
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+.form  a {
+  color: #f5ecca;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+
+
+.form p {
+  color: #ff0000;
+  font-size: 12px;
+  margin-bottom: 0;
+}
+.form-control::placeholder {
+    color: red; /* Change the color to your desired color */
+}
+
+.form .footer-p {
+  color: #ab9c46;
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+.btn {
+  padding: 10px 15px;
+  border-radius: 3px;
+  text-align: center;
+  transition: all 0.3s;
+  outline: none !important;
+} 
+
+.btn:focus,
+.btn:active {
+  outline: none !important;
+  box-shadow: none !important; 
+}
+
+
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: #f6e05e !important; 
+  box-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.2) !important; 
+}
+
+.btn-primary {
+  color: #161e2e;
+  font-size: 14px;
+  letter-spacing: 3;
+  font-weight: 500;
+  background: #f6e05e;
+  box-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.2);
+}
+.btn-primary:hover {
+  background: #ecc94b;
+}
+.btn-secondary {
+  color: #f6e05e;
+  border: 1px solid #f6e05e;
+}
+.btn-secondary:hover {
+  color: #161e2e;
+  background: #ecc94b;
+}
+
+.img1 {
+  width: 800px;
+  height: 500px;
+  background: orange;
+}
+
+.img2 {
+  width: 800px;
+  height: 500px;
+  background: purple;
+}
+
+.container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  position: relative;
+  width: 370px;
+  height: 500px;
+  background: #2a2c36;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.user {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  transition: 0.5s;
+}
+
+.user .formBx {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #2a2c36;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 24px;
+  transition: 0.5s;
+}
+
+
+/* 
+.content .singupBox {
+  pointer-events: none;
+} */
+
+/* .content.active .singupBox {
+  pointer-events: initial;
+}
+
+.content .singupBox .formBx {
+  left: 100%;
+  transition: 0.5s;
+}
+
+.content.active .singupBox .formBx {
+  left: 0;
+  transition: 0.5s;
+}
+
+.content .singinBox .formBx {
+  left: 0;
+  transition: 0.5s;
+}
+
+.content.active .singinBox .formBx {
+  left: 100%;
+  transition: 0.5s;
+} */
+
+/* .form-container {
+  position: absolute;
+  top: 0;
+  right: -100%; /
+  width: 100%;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.7s ease, visibility 0.7s ease, transform 0.7s ease, right 0.7s ease; 
+}
+
+.form-container.active {
+  visibility: visible;
+  opacity: 1;
+  right: 0; 
+  position: relative;
+  transform: translateX(0); 
+} */
+
+
+
+
+
+/*# sourceMappingURL=style.css.map */

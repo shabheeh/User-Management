@@ -1,0 +1,108 @@
+/* General Styles */
+body {
+    background-color: #e6e5e1; /* Use the background color from the first CSS */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 20px;
+}
+
+.panel-info {
+    border-color: #f6e05e; /* Primary color */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.panel-heading {
+    background-color: #f6e05e; /* Primary color */
+    border-color: #f6e05e; /* Primary color */
+    color: #2a2c36; /* Dark text color from the first CSS */
+    padding: 15px;
+    text-align: center;
+}
+
+.panel-title {
+    font-size: 24px;
+    margin: 0;
+}
+
+.panel-body {
+    padding: 30px;
+    background-color: #2a2c36; /* Dark background color */
+    color: #abb4bd; /* Light text color */
+}
+
+/* User Information Styles */
+.img-responsive {
+    border-radius: 50%;
+    max-width: 100%;
+    height: auto;
+}
+
+.user-info h3 {
+    margin-top: 0;
+    color: #f6e05e; /* Primary color */
+}
+
+.user-info h4 {
+    margin-top: 5px;
+    color: #ecc94b; /* Secondary color */
+}
+
+.table-user-information .glyphicon {
+    margin-right: 10px;
+    font-size: 18px;
+    color: #f6e05e; /* Primary color */
+}
+
+.table-user-information .text-primary {
+    color: #f6e05e; /* Primary color */
+}
+
+.button-group {
+    margin-top: 20px;
+}
+
+.button-group .btn {
+    margin-right: 10px;
+    border-radius: 20px;
+    color: #161e2e; /* Dark text color from the first CSS */
+    background-color: #f6e05e; /* Primary color */
+    border: none;
+}
+
+.button-group .btn:hover {
+    background-color: #ecc94b; /* Secondary color */
+}
+
+/* Panel Footer Styles */
+.panel-footer {
+    background-color: #e6e5e1; /* Light background color */
+    border-top: 1px solid #ddd;
+    padding: 15px 30px;
+}
+
+.panel-footer h5 {
+    margin: 0;
+    color: #2a2c36; /* Dark text color */
+}
+
+.panel-footer .btn-sm {
+    margin-right: 5px;
+    border-radius: 15px;
+    color: #161e2e; /* Dark text color */
+    background-color: #f6e05e; /* Primary color */
+    border: none;
+}
+
+.panel-footer .btn-sm:hover {
+    background-color: #ecc94b; /* Secondary color */
+}
+
+/* Tooltip Styles */
+.tooltip-inner {
+    background-color: #f6e05e; /* Primary color */
+    color: #2a2c36; /* Dark text color */
+}

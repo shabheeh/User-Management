@@ -1,0 +1,143 @@
+<%- include('../layouts/header', { cssFile: '/static/userHome.css' }) %>
+
+<body>
+    <div class="container">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">User Profile</h3>
+            </div>
+       <!-- Panel-Body -->   
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-xs-12 col-md-3 col-lg-3" align="center">
+                  <img src="https://www.strasys.uk/wp-content/uploads/2022/02/Depositphotos_484354208_S.jpg" class="img-responsive " alt="User image">
+                </div><!-- /.col-xs-12 -->
+        <!-- User Information -->
+                <div class="col-xs-12 col-md-5 col-lg-5">  
+                  <h3>
+                    <%= user.username %>
+                  </h3>
+                  
+                  <div class="table-responsive">
+                    <table class="table table-responsive table-user-information">
+                      <tbody>
+                        <tr>
+                          <td>
+                            <strong>
+                              <span class="glyphicon glyphicon-home"></span>
+                            </strong>
+                          </td>
+                          <td class="text-light">
+                            <%= user.email %>
+                          </td>
+                        </tr><!--/home -->
+                        <tr>
+                           <td>
+                            <strong>
+                              <span class="glyphicon glyphicon-envelope"></span>
+                            </strong>
+                          </td>
+                          <td class="text-light">
+                            <%= user.mobile %>
+                          </td>
+                        </tr><!--/email -->
+                                     
+                      </tbody>
+                    </table>
+                    </div> <!-- /.table-responsive -->
+        <!-- Social Buttons -->
+                    <div class="button-group">
+                      <button class="btn">
+                         <a  class="social-icon si-border si-github si-border-round">
+                       <i class="fa fa-github"></i></a></button>
+            <button class="btn"><a class="social-icon si-border si-g-plus si-border-round">
+                      <i class="fa fa-google-plus"></i>             
+                  </a></button>
+                      <button class="btn"><a class="social-icon si-border si-linkedin si-border-round">
+                      <i class="fa fa-linkedin"></i>             
+                  </a></button>
+              <button class="btn"><a class="social-icon si-border si-facebook si-border-round">
+                      <i class="fa fa-facebook"></i>             
+                  </a></button>
+            
+        </div><!-- /.button-group -->
+                   
+                </div><!-- /.col-xs-12 -->
+              </div><!-- /.row -->
+            </div><!-- /.panel-body -->
+       <!-- Panel-Footer -->
+            <div class="panel-footer">
+              
+              <div class="pull-right">
+                                  <!-- <button data-toggle="modal" data-target="#editUserModal" class="btn btn-sm btn-success">Edit</button> -->
+                                  <button data-toggle="modal" data-target="#signOutModal" class="btn btn-sm btn-danger">Sign Out</button>
+                              </div>
+            </div>
+          </div><!-- /.panel panel-info -->
+      </div><!-- /.container -->
+
+      <!-- Edit User Modal -->
+      <!-- <div id="editUserModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/edituser" method="post">
+                        <input type="hidden" name="userId" value="<%= user._id %>">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" name="username" value="<%= user.username %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" name="email" value="<%= user.email %>" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="mobile">Mobile</label>
+                            <input type="text" class="form-control" name="mobile" value="<%= user.mobile %>" placeholder="Mobile">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- Sign Out Modal -->
+    <div id="signOutModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirm Sign Out</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to sign out?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <a href="/signout" class="btn btn-danger">Sign Out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+
+
+<%- include('../layouts/footer') %>
